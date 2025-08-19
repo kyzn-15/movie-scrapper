@@ -387,12 +387,6 @@ def direct_download():
     except Exception as e:
         flash(f'Error saat download: {str(e)}', 'error')
         return redirect(url_for('index'))
-
-# Remove routes yang tidak diperlukan lagi
-# - /scrape (diganti dengan /api/get_download_info)
-# - /download/<filename> (diganti dengan /download)
-# - /files (tidak diperlukan karena tidak ada penyimpanan lokal)
-# - /api/scrape (diganti dengan /api/get_download_info)
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
