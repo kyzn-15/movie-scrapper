@@ -1,0 +1,106 @@
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.main-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+.btn-primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+.btn-success {
+  background: linear-gradient(45deg, #28a745, #20c997);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(40, 167, 69, 0.4);
+}
+.form-control {
+  border-radius: 15px;
+  border: 2px solid #e9ecef;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+.alert {
+  border-radius: 15px;
+  border: none;
+}
+.progress {
+  height: 25px;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+}
+.progress-bar {
+  border-radius: 15px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+}
+.card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.file-info {
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  border-left: 4px solid #28a745;
+}
+.file-info .row {
+  align-items: center;
+}
+.file-info strong {
+  color: #495057;
+}
+#filmTitle {
+  font-size: 1.1em;
+}
+#fileSize {
+  font-size: 1.1em;
+}
+#fileName {
+  background: rgba(108, 117, 125, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

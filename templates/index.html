@@ -1,0 +1,176 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45.11.57.71 Film Scraper</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="main-container p-5">
+                    <div class="text-center mb-5">
+                        <i class="fas fa-film fa-4x text-primary mb-3"></i>
+                        <h1 class="display-4 fw-bold text-dark">45.11.57.71 Film Scraper</h1>
+                        <p class="lead text-muted">Download film copyright-free dari 45.11.57.71 langsung ke device Anda</p>
+                    </div>
+
+                    <!-- Alert Messages -->
+                    <div id="alertContainer"></div>
+
+                    <form id="scrapeForm" class="mb-4">
+                        <div class="mb-4">
+                            <label for="film_url" class="form-label fw-bold">
+                                <i class="fas fa-link me-2"></i>URL Film
+                            </label>
+                            <input type="url" 
+                                   class="form-control" 
+                                   id="film_url" 
+                                   name="film_url" 
+                                   placeholder="http://45.11.57.71/movie-elio-2025-webdl/" 
+                                   required>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Masukkan URL film copyright-free lengkap dari 45.11.57.71
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg" id="scrapeBtn">
+                                <i class="fas fa-search me-2"></i>
+                                Analisis & Siapkan Download
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Progress Section (Hidden by default) -->
+                    <div id="progressSection" class="d-none">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-cog fa-spin me-2"></i>
+                                    Progress Analisis
+                                </h5>
+                                <div id="statusText" class="mb-3 text-muted">Memulai proses...</div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         style="width: 0%" 
+                                         id="progressBar">0%</div>
+                                </div>
+                                
+                                <!-- File Info Section -->
+                                <div id="fileInfoSection" class="d-none">
+                                    <div class="file-info">
+                                        <h6 class="text-success mb-3">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            Analisis Selesai!
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <strong><i class="fas fa-film me-2"></i>Judul Film:</strong>
+                                                <div id="filmTitle" class="fw-bold text-primary"></div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong><i class="fas fa-hdd me-2"></i>Ukuran File:</strong>
+                                                <div id="fileSize" class="fw-bold text-info"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <strong><i class="fas fa-file-video me-2"></i>Nama File:</strong>
+                                                <div id="fileName" class="text-break font-monospace small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <strong><i class="fas fa-link me-2"></i>Buzzheavier Link:</strong>
+                                                <div id="buzzLink" class="text-break small text-muted"></div>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 mt-4">
+                                            <button id="downloadBtn" class="btn btn-success btn-lg pulse">
+                                                <i class="fas fa-download me-2"></i>
+                                                Download Film Sekarang
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Section -->
+                    <div class="mt-4 text-center">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#helpModal">
+                            <i class="fas fa-question-circle me-2"></i>Cara Penggunaan
+                        </button>
+                    </div>
+
+                    <!-- Help Modal -->
+                    <div class="modal fade" id="helpModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        <i class="fas fa-question-circle me-2"></i>Cara Penggunaan
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6><i class="fas fa-step-forward me-2"></i>Langkah-langkah:</h6>
+                                            <ol class="list-group list-group-numbered">
+                                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">Copy URL Film</div>
+                                                        Salin URL film copyright-free dari website 45.11.57.71
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">Paste & Analisis</div>
+                                                        Tempelkan URL dan klik "Analisis & Siapkan Download"
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">Download Langsung</div>
+                                                        Setelah analisis selesai, klik tombol download untuk mengunduh langsung ke device Anda
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h6><i class="fas fa-lightbulb me-2"></i>Tips:</h6>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Pastikan koneksi internet stabil</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>URL harus lengkap dan valid</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>File akan langsung terdownload ke folder Downloads device Anda</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Hanya untuk film copyright-free dan legal</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
